@@ -1,0 +1,43 @@
+{
+  "name": "react_tutorial",
+  "version": "1.0.0",
+  "description": "Tutorial from online.reacttraining.com for learning React",
+  "main": "index.js",
+  "scripts": {
+    "create": "webpack",
+    "start": "webpack-dev-server --open",
+    "build": "NODE_ENV='production' webpack -p",
+    "deploy": "npm run build && firebase deploy",
+    "firebase-init": "firebase login && firebase init"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
+  "author": "Lea Marolt Sonnenschein",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.16.1",
+    "file-loader": "^0.11.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-masonry-component": "^5.0.7",
+    "react-router-dom": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.3",
+    "firebase-tools": "^3.9.1",
+    "html-webpack-plugin": "^2.28.0",
+    "query-string": "^4.3.4",
+    "style-loader": "^0.18.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
