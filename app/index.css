@@ -37,6 +37,7 @@ li {
   margin-left: 20px;
   display: flex;
   justify-content:flex-start;
+  margin-bottom:20px;
 }
 
 .nav-list li {
@@ -56,21 +57,26 @@ li {
   column-count: 3;
   -moz-column-count: 3;
   -webkit-column-count: 3;
-  column-gap: 0;
-  -moz-column-gap: 0;
-  -webkit-column-gap: 0;
-  margin: 0;
-  padding: 0;
+  column-gap: 20px;
+  -moz-column-gap: 20px;
+  -webkit-column-gap: 20px;
+  margin: 20px;
+  padding: 20px;
 }
 
 .quad {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
   width: 100%;
+  margin-bottom: 20px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  border: solid 20px black;
+  display: inline-block;
+  transition: 0.3s border-color;
+}
+
+.quad:hover {
+  border-color: #FFC300;
 }
 
 .bigQuad {
@@ -78,16 +84,63 @@ li {
 }
 
 .littleQuad {
-  width: 50%;
+  width: 100%;
+}
+
+.quadContent {
+  text-align: center;
+  height: 100%;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  transition: 0.3s background, 0.3s -webkit-filter;
+}
+
+.quadContent:hover {
+  background: RGB(48, 149, 151);
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+  cursor: pointer;
+}
+
+.quadContent img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.quadDetailsContainer {
+  width: 100%;
+  height: 100%;
+  margin:0;
+  border: solid 20px black;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
 
 // mediaqueries
 
 @media only screen and (min-width: 1001px) and (max-width: 1002px) {
   .projectMasonry {
-      -moz-column-count: 3;
-      -webkit-column-count: 3;
-      column-count: 3;
+      -moz-column-count: 5;
+      -webkit-column-count: 5;
+      column-count: 5;
   }
 }
 
@@ -104,9 +157,5 @@ li {
       -moz-column-count: 1;
       -webkit-column-count: 1;
       column-count: 1;
-  }
-  .littleQuad {
-    width: 100%;
-    padding-bottom: 100%;
   }
 }

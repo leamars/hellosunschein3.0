@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component';
+import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 
 class Quad extends Component {
   constructor(props) {
@@ -11,14 +12,14 @@ class Quad extends Component {
       color: props.color,
       size: props.size,
       img: props.img,
-      text: props.text
+      text: props.text,
     }
   }
 
   componentDidMount() {
     var width = ReactDOM.findDOMNode(this).offsetWidth;
     window.addEventListener("resize", this.updateDimensions.bind(this));
-    this.setState({height: width});
+    this.setState({height: width/4*3});
   }
 
   componentWillUnmount() {
@@ -28,17 +29,23 @@ class Quad extends Component {
   updateDimensions() {
     console.log("updating dimensions");
     var width = ReactDOM.findDOMNode(this).offsetWidth;
-    this.setState({height: width});
+    this.setState({height: width/4*3});
   }
 
   render() {
-    console.log('Height: ' + this.state.height);
     return (
-      <div className={this.props.className} style={{
-        backgroundColor: this.props.color,
-        height: this.state.height
-      }}>
-        <div>Hello!</div>
+      <div
+        // This 'handleOnClick' passes the whole quad to the parent
+        onClick={this.props.handleOnClick.bind(null, this)}
+        className={this.props.className}
+        style={{
+          backgroundColor: "#FFFFFF",
+          height: this.state.height
+        }}>
+        <div
+          className="quadContent">
+          <img src= {this.props.img} />
+        </div>
       </div>
     )
   }
@@ -48,7 +55,8 @@ Quad.propTypes = {
   color: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  handleOnClick: PropTypes.func.isRequired
 }
 
 Quad.defaultProps = {
@@ -58,41 +66,76 @@ Quad.defaultProps = {
   text: 'Lea!!'
 }
 
+class QuadDetails extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-function QuadGrid(props) {
+  render() {
+    return (
+      <div
+        className='quadDetailsContainer'>DETAILS!
+      </div>
+    )
+  }
+}
 
-  var childElements = props.quads.map((quad, index) => {
-    var sizeStyle = quad % 2 ? 'quad bigQuad' : 'quad littleQuad';
-    console.log(quad);
-        return (
-          <li>
+class QuadGrid extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      shouldShowDetails: false,
+      selectedQuad: null
+    }
+
+    this.toggleDetails = this.toggleDetails.bind(this);
+  }
+
+  toggleDetails(quad) {
+    console.log("hello!");
+    console.log(quad.props.color);
+    this.setState({shouldShowDetails: true, selectedQuad: quad});
+  }
+
+  render() {
+    var randomColor = getRandomColor();
+    var imgs = [
+      'https://cdn.dribbble.com/users/375673/screenshots/3026449/georgiadribbble2.png',
+      'https://cdn.dribbble.com/users/375673/screenshots/2925139/dribblefinal.gif',
+      'https://cdn.dribbble.com/users/375673/screenshots/2921639/businesscardsdribble.png',
+      'https://cdn.dribbble.com/users/375673/screenshots/2913311/typo800x400.png',
+      'https://cdn.dribbble.com/users/375673/screenshots/2911380/paintsignrightdimensions.png',
+      'https://cdn.dribbble.com/users/375673/screenshots/2928618/flaggif3.gif',
+      'https://cdn.dribbble.com/users/375673/screenshots/2719741/appdev_logo.png',
+      'https://cdn.dribbble.com/users/375673/screenshots/2724647/preseventlogo.png',
+      'https://cdn.dribbble.com/users/375673/screenshots/2921631/ezgif.com-gif-maker-_3_.gif'
+    ];
+    var numImgs = imgs.length;
+    var randomImg = imgs[Math.floor(Math.random() * numImgs)];
+
+    console.log("Are we supposed to show details..." + this.state.shouldShowDetails);
+    
+    return (
+      <div className='projectMasonry'>
+        {this.props.quads.map((quad, index) => {
+
+          var sizeStyle = quad % 2 === 0 ? 'quad bigQuad' : 'quad littleQuad';
+
+          return (
             <Quad
               className={sizeStyle}
               key={index}
+              color={randomColor}
+              text={'' + index}
+              img= {randomImg}
+              handleOnClick= {this.toggleDetails}
             />
-
-          </li>
-        )
-      });
-
-  return (
-
-    <div className='projectMasonry'>
-      {props.quads.map((quad, index) => {
-
-        var sizeStyle = quad % 2 === 0 ? 'quad bigQuad' : 'quad littleQuad';
-        var randomColor = getRandomColor();
-        return (
-          <Quad
-            className={sizeStyle}
-            key={index}
-            color={randomColor}
-            text={'' + index}
-          />
           )
         })}
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 function getRandomColor() {
@@ -106,14 +149,14 @@ function getRandomColor() {
     '#FF7E29',
   ]
   var numColors = colors.length-1;
-  console.log(numColors);
 
   return colors[Math.floor(Math.random() * numColors)];
 }
 
 QuadGrid.propTypes = {
-  quads: PropTypes.array.isRequired
+  quads: PropTypes.array.isRequired,
 }
 
 module.exports = Quad;
+module.exports = QuadDetails;
 module.exports = QuadGrid;
