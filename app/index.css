@@ -33,11 +33,20 @@ li {
   width: 100%;
 }
 
+.nav-container {
+
+}
+
 .nav-list {
   margin-left: 20px;
   display: flex;
   justify-content:flex-start;
   margin-bottom:20px;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: black;
 }
 
 .nav-list li {
@@ -50,6 +59,9 @@ li {
 
 .nav-list li:hover {
   cursor: pointer;
+}
+
+.active {
   border-bottom: solid thick;
 }
 
@@ -111,27 +123,50 @@ li {
 
 .quadDetailsContainer {
   width: 100%;
-  height: 100%;
   margin:0;
-  border: solid 20px black;
+  background-color: white;
+  position: absolute;
+  top:0;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 20px #FFC300;
 }
 
-.example-enter {
-  opacity: 0.01;
-}
-
-.example-enter.example-enter-active {
+.quadDetailsContentBlock {
+  width: 90%;
+  height:200px;
+  margin:20px;
+  background-color: #FFC300;
   opacity: 1;
-  transition: opacity 500ms ease-in;
 }
 
-.example-leave {
+.anim-appear {
+  opacity: 0.5;
+}
+
+.anim-appear.anim-appear-active{
+  opacity: 0.5;
+  transition: opacity 0.5s ease-in;
+}
+
+.anim-leave {
+  opacity: 0.5;
+}
+
+.anim2-appear {
+  opacity: 0;
+  left: -100%;
+  top:-100%;
+}
+
+.anim2-appear.anim2-appear-active{
   opacity: 1;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
+  transition: opacity 0.2s ease-in, left 0.8s cubic-bezier(.75,.19,.83,.67);
+  left: 0px;
+  top: 0px;
 }
 
 // mediaqueries
@@ -152,7 +187,7 @@ li {
   }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 649px) {
+@media only screen and (max-width: 649px) {
   .projectMasonry {
       -moz-column-count: 1;
       -webkit-column-count: 1;

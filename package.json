@@ -19,15 +19,19 @@
   "author": "Lea Marolt Sonnenschein",
   "license": "ISC",
   "dependencies": {
+    "animated": "^0.2.0",
     "axios": "^0.16.1",
     "file-loader": "^0.11.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.6.0",
+    "react-animations": "^0.1.0",
     "react-dom": "^15.5.4",
     "react-masonry-component": "^5.0.7",
     "react-router-dom": "^4.1.1",
-    "react-router-page-transition": "^3.0.2"
+    "react-router-page-transition": "^3.0.2",
+    "react-router-transition": "^0.1.1",
+    "react-transition-group": "^1.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

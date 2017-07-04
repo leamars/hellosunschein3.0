@@ -6,9 +6,23 @@ function Nav(props) {
   return (
     <div className="nav-container">
       <ul className="nav-list">
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
+        <li>
+          <NavLink exact activeClassName='active' to='/'>
+            Home
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink activeClassName='active' to='/about'>
+            About
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink activeClassName='active' to='/contact'>
+            Contact
+          </NavLink>
+        </li>
       </ul>
     </div>
   )
