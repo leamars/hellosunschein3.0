@@ -5,32 +5,30 @@ import { Link } from 'react-router-dom'
 import ProjectAPI from '../utils/Api';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-function parseQuery(query) {
-  var vars = query.toString().split('/');
-  var param = vars[vars.length-1];
-
-  return param;
-}
-
 class QuadDetails extends Component {
+
   constructor(props) {
     super(props);
   }
 
   render() {
-    var projectId = this.props.projectId // Grabs project ID from URL
-    var exists = ProjectAPI.get(projectId);
-    console.log("This project exists in the API - ", exists);
+    var projectId = this.props.projectId
+    var projectFull = ProjectAPI.get(projectId); // Grab project from API
     return (
-        <div className='quadDetailsContainer'> DETAILS!
-          <div
-            className='quadDetailsContentBlock'
-            onClick={this.props.handleOnClose.bind(null)}>
-          </div>
-          <div className='quadDetailsContentBlock'></div>
-          <div className='quadDetailsContentBlock'></div>
-          <div className='quadDetailsContentBlock'></div>
-          <div className='quadDetailsContentBlock'></div>
+        <div
+          className='quadDetailsContainer'
+          style={{
+            borderColor: this.props.color,
+            backgroundColor: this.props.color
+          }}
+          onClick={this.props.handleOnClose.bind(null)}
+        >
+          <p>{this.props.title}</p>
+          <Link
+            to={`/`}
+          >
+            <img src={this.props.img} />
+          </Link>
         </div>
     )
   }
@@ -39,6 +37,9 @@ class QuadDetails extends Component {
 QuadDetails.propTypes = {
   projectId: PropTypes.string.isRequired,
   scrollDirection: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
   handleOnClose: PropTypes.func.isRequired
 }
 

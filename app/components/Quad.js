@@ -8,10 +8,9 @@ class Quad extends Component {
     super(props);
 
     this.state = {
-      color: props.color,
-      size: props.size,
-      img: props.img,
-      name: props.name,
+      height: 0,
+      width: 0,
+      hover: false
     }
   }
 
@@ -31,7 +30,16 @@ class Quad extends Component {
     this.setState({height: width/4*3});
   }
 
+  toggleHover(isHovered) {
+    this.setState({hover: isHovered});
+  }
+
   render() {
+    var borderColor = this.props.color;
+    if (!this.state.hover) {
+      borderColor = '#000000';
+    }
+
     return (
       <Link
         to={`/projects/${this.props.name}`}
@@ -41,9 +49,11 @@ class Quad extends Component {
           onClick={this.props.handleOnClick.bind(null, this)}
           className={this.props.className}
           style={{
-            backgroundColor: "#FFFFFF",
-            height: this.state.height
-          }}>
+            height: this.state.height,
+            borderColor: borderColor
+          }}
+          onMouseEnter={this.toggleHover.bind(this, true)}
+          onMouseLeave={this.toggleHover.bind(this, false)}>
           <div
             className="quadContent">
             <img src= {this.props.img} />

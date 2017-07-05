@@ -4,6 +4,7 @@ import QuadGrid from './QuadGrid';
 import ProjectAPI from '../utils/Api';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import QuadDetails from './QuadDetails';
+import PropTypes from 'prop-types';
 
 class Home extends React.Component {
 
@@ -18,22 +19,60 @@ class Home extends React.Component {
 
   }
 
+  componentDidMount() {
+    var scrollTop = this.props.scrollPositionTop;
+    console.log("componentDidMount: " + scrollTop);
+    setTimeout(() => {
+      window.scrollTo(0, scrollTop);
+    });
+  }
+
   toggleDetails() {
     this.setState({showingDetails: !this.state.showingDetails});
-    console.log("CLOSINGGGGG");
+    var scrollTop = this.props.scrollPositionTop;
+    console.log("toggleDetails: " + scrollTop);
+    setTimeout(() => {
+      window.scrollTo(0, scrollTop);
+    });
+  }
+
+  componentWillUpdate() {
+
+  }
+
+  componentDidUpdate() {
+    console.log("Component did update scroll top: " + scrollTop);
+    setTimeout(() => {
+      window.scrollTo(0, scrollTop);
+    });
   }
 
   render() {
-    console.log("HELLO, THIS IS HOME...");
+    //window.scrollTop = 500;
 
-    console.log(ProjectAPI);
-    var projectId = this.props.match.params.projectId // Grabs project ID from URL
-    var exists = ProjectAPI.get(projectId);
-    console.log("This project exists in the API - ", exists);
+    var projectId; // Grabs project ID from URL
+    if (this.props.match) {
+      projectId = this.props.match.params.projectId;
+    }
 
-    if (exists && this.state.showingDetails) {
+
+    var projectFull;
+    if (projectId) {
+      projectFull = ProjectAPI.get(projectId);
+    }
+
+    var animationOptions = [
+      "anim2",
+      "anim3",
+      "anim4",
+      "anim5"
+    ]
+    var animation = animationOptions[Math.floor(Math.random() * (animationOptions.length))];
+
+    if (projectFull && this.state.showingDetails) {
       return (
         <div>
+
           <ReactCSSTransitionGroup transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionLeaveTimeout={0} transitionEnter={false}>
             <div>
               <QuadGrid
@@ -43,10 +82,14 @@ class Home extends React.Component {
             </div>
           </ReactCSSTransitionGroup>
 
-          <ReactCSSTransitionGroup transitionName="anim2" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false}>
+          <ReactCSSTransitionGroup transitionName={animation} transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false}>
             <QuadDetails
-              projectId= {projectId}
+              projectId = {projectId}
               handleOnClose = {this.toggleDetails}
+              color = {projectFull.color}
+              title = {projectFull.name}
+              img = {projectFull.img}
+              scrollDirection = "Left"
             />
 
           </ReactCSSTransitionGroup>
@@ -64,6 +107,11 @@ class Home extends React.Component {
     }
 
   }
+}
+
+Home.propTypes = {
+  handleScroll: PropTypes.func,
+  scrollPositionTop: PropTypes.number
 }
 
 module.exports = Home;

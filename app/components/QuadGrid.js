@@ -17,8 +17,6 @@ class QuadGrid extends Component {
   }
 
   toggleDetails(quad) {
-    console.log("hello!");
-    console.log(quad.props.color);
     this.setState({shouldShowDetails: true, selectedQuad: quad});
     this.props.handleOnOpen();
   }
