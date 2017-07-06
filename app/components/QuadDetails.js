@@ -37,7 +37,10 @@ class QuadDetails extends Component {
           }}>
             <img src={projectFull.img} />
           </Link>
-          
+          <div className='quadDetailsContentBlock'></div>
+          <div className='quadDetailsContentBlock'></div>
+          <div className='quadDetailsContentBlock'></div>
+          <div className='quadDetailsContentBlock'></div>
         </div>
     )
   }
