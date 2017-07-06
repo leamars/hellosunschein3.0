@@ -11,55 +11,49 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showingDetails: false
+    this.toggleDetails = this.toggleDetails.bind(this);
+  }
+
+  // This method helps maintain the scrolling position for the users
+  // ------------------------
+  // App saves scrollTop to context
+  // Home reads scrollTop from context when navigating TO Project Details
+  // When navigating FROM Project Details we pass back quadDetailsScrollTop
+  // If we're not navigating back from Project Details, quadDetailsScrollTop will be undefined
+  // -------------------------
+  // App context - scrollTop => Home => Render
+  // Project details - quadDetailsScrollTop => Home => Render
+
+  toggleDetails(quadDetailsScrollTop) {
+
+    var scrollTop = this.context.scrollFromTop;
+    // If we got scrollTop data passed from details view, use that instead
+    if (quadDetailsScrollTop) {
+      scrollTop = quadDetailsScrollTop;
     }
 
-    this.toggleDetails = this.toggleDetails.bind(this);
-
-  }
-
-  componentDidMount() {
-    var scrollTop = this.props.scrollPositionTop;
-    console.log("componentDidMount: " + scrollTop);
-    setTimeout(() => {
-      window.scrollTo(0, scrollTop);
-    });
-  }
-
-  toggleDetails() {
-    this.setState({showingDetails: !this.state.showingDetails});
-    var scrollTop = this.props.scrollPositionTop;
-    console.log("toggleDetails: " + scrollTop);
-    setTimeout(() => {
-      window.scrollTo(0, scrollTop);
-    });
-  }
-
-  componentWillUpdate() {
-
-  }
-
-  componentDidUpdate() {
-    console.log("Component did update scroll top: " + scrollTop);
     setTimeout(() => {
       window.scrollTo(0, scrollTop);
     });
   }
 
   render() {
-    //window.scrollTop = 500;
-
+    var shouldShowDetails = false;
     var projectId; // Grabs project ID from URL
+
+    // If we're on a URL that has path params, it means we should show project details
     if (this.props.match) {
       projectId = this.props.match.params.projectId;
     }
 
-
     var projectFull;
+    // If we're supposed to show product details, set shouldShowDetails to true
     if (projectId) {
       projectFull = ProjectAPI.get(projectId);
+      shouldShowDetails = true;
     }
+
+    console.log("Project ID? " + projectId);
 
     var animationOptions = [
       "anim2",
@@ -67,9 +61,10 @@ class Home extends React.Component {
       "anim4",
       "anim5"
     ]
+
     var animation = animationOptions[Math.floor(Math.random() * (animationOptions.length))];
 
-    if (projectFull && this.state.showingDetails) {
+    if (projectFull && shouldShowDetails) {
       return (
         <div>
 
@@ -84,12 +79,8 @@ class Home extends React.Component {
 
           <ReactCSSTransitionGroup transitionName={animation} transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false}>
             <QuadDetails
-              projectId = {projectId}
               handleOnClose = {this.toggleDetails}
-              color = {projectFull.color}
-              title = {projectFull.name}
-              img = {projectFull.img}
-              scrollDirection = "Left"
+              projectId = {projectId}
             />
 
           </ReactCSSTransitionGroup>
@@ -113,5 +104,9 @@ Home.propTypes = {
   handleScroll: PropTypes.func,
   scrollPositionTop: PropTypes.number
 }
+
+Home.contextTypes = {
+  scrollFromTop: PropTypes.number
+};
 
 module.exports = Home;

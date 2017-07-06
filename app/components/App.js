@@ -6,6 +6,7 @@ import Home from './Home';
 import About from './About';
 import Contact from './Contact';
 import QuadDetails from './QuadDetails';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
 
@@ -20,6 +21,10 @@ class App extends React.Component {
     this.renderHomeComponent = this.renderHomeComponent.bind(this);
   }
 
+  getChildContext() {
+    return { scrollFromTop: this.state.scrollFromTop };
+  }
+
   componentDidMount() {
     window.addEventListener('scroll', this.storeScrollIfNeeded);
   }
@@ -29,7 +34,7 @@ class App extends React.Component {
     var scrollFromTop = document.body.scrollTop;
     var currentLocation = window.location.pathname;
 
-    if (currentLocation == "/") {
+    if (currentLocation == "/" || currentLocation.startsWith("/projects")) {
       this.setState({scrollFromTop: scrollFromTop});
     }
   }
@@ -37,9 +42,7 @@ class App extends React.Component {
   renderHomeComponent() {
     var scrollTop = this.state.scrollFromTop;
     return (
-      <Home
-        scrollPositionTop = {scrollTop}
-      />
+      <Home scrollPositionTop = {scrollTop}/>
     )
   }
 
@@ -63,5 +66,9 @@ class App extends React.Component {
     )
   }
 }
+
+App.childContextTypes = {
+  scrollFromTop: PropTypes.number
+};
 
 module.exports = App;

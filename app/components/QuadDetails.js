@@ -11,40 +11,46 @@ class QuadDetails extends Component {
     super(props);
   }
 
+  componentDidUpdate() {
+    console.log("Context in Quad Details " + this.context.scrollFromTop);
+  }
+
   render() {
+
     var projectId = this.props.projectId
     var projectFull = ProjectAPI.get(projectId); // Grab project from API
+
+    var currentScrollTop = this.context.scrollFromTop;
     return (
         <div
           className='quadDetailsContainer'
           style={{
-            borderColor: this.props.color,
-            backgroundColor: this.props.color
+            borderColor: projectFull.color,
+            backgroundColor: projectFull.color
           }}
-          onClick={this.props.handleOnClose.bind(null)}
+          onClick={this.props.handleOnClose.bind(null, currentScrollTop)}
         >
-          <p>{this.props.title}</p>
-          <Link
-            to={`/`}
-          >
-            <img src={this.props.img} />
+          <p>{projectFull.name}</p>
+          <Link to={`/`}>
+            <img src={projectFull.img} />
           </Link>
+          <div className='quadDetailsContentBlock'></div>
+          <div className='quadDetailsContentBlock'></div>
+          <div className='quadDetailsContentBlock'></div>
+          <div className='quadDetailsContentBlock'></div>
         </div>
     )
   }
 }
 
+// Either we get a projectID coming from the URL, OR we get the
 QuadDetails.propTypes = {
-  projectId: PropTypes.string.isRequired,
-  scrollDirection: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
+  projectId: PropTypes.string,
   handleOnClose: PropTypes.func.isRequired
 }
 
-QuadDetails.defaultProps = {
-  scrollDirection: 'left'
-}
+QuadDetails.contextTypes = {
+  scrollFromTop: PropTypes.number
+};
 
 module.exports = QuadDetails;
