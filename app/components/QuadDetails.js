@@ -31,13 +31,13 @@ class QuadDetails extends Component {
           onClick={this.props.handleOnClose.bind(null, currentScrollTop)}
         >
           <p>{projectFull.name}</p>
-          <Link to={`/`}>
+          <Link to={{
+            pathname: `/`,
+            state: { modal: true }
+          }}>
             <img src={projectFull.img} />
           </Link>
-          <div className='quadDetailsContentBlock'></div>
-          <div className='quadDetailsContentBlock'></div>
-          <div className='quadDetailsContentBlock'></div>
-          <div className='quadDetailsContentBlock'></div>
+          
         </div>
     )
   }
