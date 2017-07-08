@@ -42,11 +42,12 @@ class Quad extends Component {
 
     return (
       <Link
-        to={`/projects/${this.props.name}`}
+        to={{
+          pathname: `/projects/${this.props.name}`,
+          state: { modal: true, returnTo: this.props.location.pathname }
+        }}
       >
         <div
-          // This 'handleOnClick' passes the whole quad to the parent
-          onClick={this.props.handleOnClick.bind(null, this)}
           className={this.props.className}
           style={{
             height: this.state.height,

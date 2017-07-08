@@ -17,7 +17,7 @@ class QuadDetails extends Component {
 
   render() {
 
-    var projectId = this.props.projectId
+    var projectId = this.props.match.params.projectId
     var projectFull = ProjectAPI.get(projectId); // Grab project from API
 
     var currentScrollTop = this.context.scrollFromTop;
@@ -28,7 +28,7 @@ class QuadDetails extends Component {
             borderColor: projectFull.color,
             backgroundColor: projectFull.color
           }}
-          onClick={this.props.handleOnClose.bind(null, currentScrollTop)}
+          //onClick={this.props.handleOnClose.bind(null, currentScrollTop)}
         >
           <p>{projectFull.name}</p>
           <Link to={{
@@ -49,7 +49,7 @@ class QuadDetails extends Component {
 // Either we get a projectID coming from the URL, OR we get the
 QuadDetails.propTypes = {
   projectId: PropTypes.string,
-  handleOnClose: PropTypes.func.isRequired
+  //handleOnClose: PropTypes.func.isRequired
 }
 
 QuadDetails.contextTypes = {

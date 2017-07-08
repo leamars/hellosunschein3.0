@@ -13,7 +13,7 @@ class QuadGrid extends Component {
       selectedQuad: null
     }
 
-    this.toggleDetails = this.toggleDetails.bind(this);
+    //this.toggleDetails = this.toggleDetails.bind(this);
   }
 
   toggleDetails(quad) {
@@ -26,16 +26,19 @@ class QuadGrid extends Component {
     return (
       <div className='projectMasonry'>
         {this.props.projects.map((project, index) => {
-
+          console.log(JSON.stringify(project))
           return (
-            <Quad
-              className='quad'
-              key={index}
-              color={project.color}
-              name={project.name}
-              img= {project.img}
-              handleOnClick= {this.toggleDetails}
-            />
+            <Link to={`/projects/${project.name}`}>
+
+              <Quad
+                className='quad'
+                key={index}
+                color={project.color}
+                name={project.name}
+                img= {project.img}
+
+              />
+            </Link>
           )
         })}
       </div>

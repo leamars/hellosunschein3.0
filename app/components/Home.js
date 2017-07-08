@@ -11,7 +11,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggleDetails = this.toggleDetails.bind(this);
+    //this.toggleDetails = this.toggleDetails.bind(this);
   }
 
   // This method helps maintain the scrolling position for the users
@@ -64,38 +64,14 @@ class Home extends React.Component {
 
     var animation = animationOptions[Math.floor(Math.random() * (animationOptions.length))];
 
-    if (projectFull && shouldShowDetails) {
-      return (
-        <div>
-
-          <ReactCSSTransitionGroup transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionLeaveTimeout={0} transitionEnter={false}>
-            <div>
-              <QuadGrid
-                projects= {ProjectAPI.all()}
-                handleOnOpen = {this.toggleDetails}
-              />
-            </div>
-          </ReactCSSTransitionGroup>
-
-          <ReactCSSTransitionGroup transitionName={animation} transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false}>
-            <QuadDetails
-              handleOnClose = {this.toggleDetails}
-              projectId = {projectId}
-            />
-
-          </ReactCSSTransitionGroup>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <QuadGrid
-            projects= {ProjectAPI.all()}
-            handleOnOpen = {this.toggleDetails}
-          />
-        </div>
-      )
-    }
+    return (
+      <div>
+        <QuadGrid
+          projects= {ProjectAPI.all()}
+          handleOnOpen = {this.toggleDetails}
+        />
+      </div>
+    )
 
   }
 }

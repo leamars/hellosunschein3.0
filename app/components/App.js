@@ -1,6 +1,6 @@
 // React-Router examples: https://github.com/ReactTraining/react-router/tree/bd147e88c9a162f740fb7f9cd4a218343603e3ee/examples
 import React, { Component } from 'react';
-import ReactRouter, { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ReactRouter, { HashRouter, Route, Switch } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Nav from './Nav';
 import Home from './Home';
@@ -50,20 +50,20 @@ class App extends React.Component {
   render() {
 
     return (
-      <Router>
+      <HashRouter>
         <div className='container'>
           <Nav />
           <Switch>
-            <Route exact path='/' render={this.renderHomeComponent}/>
+            <Route exact path='/' component={Home}/>
             <Route exact path='/about' component={About} />
             <Route exact path='/contact' component={Contact} />
-            <Route path="/projects/:projectId" component={Home} />
+            <Route path="/projects/:projectId" component={QuadDetails} />
             <Route render={function() {
               return <p>404 - Not Found</p>
             }} />
           </Switch>
         </div>
-      </Router>
+      </HashRouter>
     )
   }
 }
