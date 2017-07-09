@@ -12,13 +12,6 @@ class QuadGrid extends Component {
       shouldShowDetails: false,
       selectedQuad: null
     }
-
-    //this.toggleDetails = this.toggleDetails.bind(this);
-  }
-
-  toggleDetails(quad) {
-    this.setState({shouldShowDetails: true, selectedQuad: quad});
-    this.props.handleOnOpen();
   }
 
   render() {
@@ -26,9 +19,14 @@ class QuadGrid extends Component {
     return (
       <div className='projectMasonry'>
         {this.props.projects.map((project, index) => {
-          console.log(JSON.stringify(project))
+
           return (
-            <Link to={`/projects/${project.name}`}>
+            <Link
+              to={{
+                pathname: `/projects/${project.name}`,
+                paramToPass: 'awesomeParam'
+              }}
+              key={index}>
 
               <Quad
                 className='quad'

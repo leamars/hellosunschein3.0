@@ -41,12 +41,6 @@ class Quad extends Component {
     }
 
     return (
-      <Link
-        to={{
-          pathname: `/projects/${this.props.name}`,
-          state: { modal: true, returnTo: this.props.location.pathname }
-        }}
-      >
         <div
           className={this.props.className}
           style={{
@@ -60,24 +54,20 @@ class Quad extends Component {
             <img src= {this.props.img} />
           </div>
         </div>
-      </Link>
     )
   }
 }
 
 Quad.propTypes = {
   color: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  handleOnClick: PropTypes.func.isRequired
+  name: PropTypes.string.isRequired
 }
 
 Quad.defaultProps = {
   color: '#0e0e0e',
-  size: 1,
   img: '',
-  text: 'Lea!!'
+  text: 'Default Project'
 }
 
 module.exports = Quad;

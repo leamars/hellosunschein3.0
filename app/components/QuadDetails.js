@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import ProjectAPI from '../utils/Api';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+// All the project components
+import EmoBot from './projects/EmoBot';
 
 class QuadDetails extends Component {
 
@@ -12,7 +15,21 @@ class QuadDetails extends Component {
   }
 
   componentDidUpdate() {
-    console.log("Context in Quad Details " + this.context.scrollFromTop);
+    //console.log("Context in Quad Details " + this.context.scrollFromTop);
+  }
+
+  componentDidMount() {
+
+    if (this.props.location.paramToPass) {
+      console.log("Got here through Quad Click");
+    } else {
+      console.log("Got here by entering URL");
+    }
+
+    // Workaround to scroll window to top when comopnent mounts
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    });
   }
 
   render() {
@@ -25,22 +42,21 @@ class QuadDetails extends Component {
         <div
           className='quadDetailsContainer'
           style={{
-            borderColor: projectFull.color,
-            backgroundColor: projectFull.color
+            //borderColor: projectFull.color,
+            //backgroundColor: projectFull.color
+            backgroundColor: 'yellow',
+            borderColor: '#fff'
           }}
-          //onClick={this.props.handleOnClose.bind(null, currentScrollTop)}
         >
-          <p>{projectFull.name}</p>
-          <Link to={{
+          <div className='quadDetails'>
+            <Link to={{
             pathname: `/`,
-            state: { modal: true }
-          }}>
-            <img src={projectFull.img} />
-          </Link>
-          <div className='quadDetailsContentBlock'></div>
-          <div className='quadDetailsContentBlock'></div>
-          <div className='quadDetailsContentBlock'></div>
-          <div className='quadDetailsContentBlock'></div>
+              state: { modal: true }
+            }}>
+              <div className='closeButton'>x</div>
+            </Link>
+            <EmoBot />
+          </div>
         </div>
     )
   }

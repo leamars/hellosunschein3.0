@@ -1,7 +1,7 @@
 {
-  "name": "react_tutorial",
+  "name": "hellosunschein-app",
   "version": "1.0.0",
-  "description": "Tutorial from online.reacttraining.com for learning React",
+  "description": "Website app for Lea Marolt Sonnenschein",
   "main": "index.js",
   "scripts": {
     "create": "webpack",
@@ -21,7 +21,6 @@
   "dependencies": {
     "animated": "^0.2.0",
     "axios": "^0.16.1",
-    "file-loader": "^0.11.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.6.0",
@@ -32,7 +31,8 @@
     "react-router-page-transition": "^3.0.2",
     "react-router-scroll": "^0.4.2",
     "react-router-transition": "^0.1.1",
-    "react-transition-group": "^1.2.0"
+    "react-transition-group": "^1.2.0",
+    "url-loader": "^0.5.9"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -40,11 +40,12 @@
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.3",
+    "file-loader": "^0.11.2",
     "firebase-tools": "^3.9.1",
     "html-webpack-plugin": "^2.28.0",
     "query-string": "^4.3.4",
     "style-loader": "^0.18.1",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.5.1"
   }
 }

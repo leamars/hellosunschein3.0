@@ -38,22 +38,6 @@ class Home extends React.Component {
   }
 
   render() {
-    var shouldShowDetails = false;
-    var projectId; // Grabs project ID from URL
-
-    // If we're on a URL that has path params, it means we should show project details
-    if (this.props.match) {
-      projectId = this.props.match.params.projectId;
-    }
-
-    var projectFull;
-    // If we're supposed to show product details, set shouldShowDetails to true
-    if (projectId) {
-      projectFull = ProjectAPI.get(projectId);
-      shouldShowDetails = true;
-    }
-
-    console.log("Project ID? " + projectId);
 
     var animationOptions = [
       "anim2",
