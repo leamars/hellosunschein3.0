@@ -29,7 +29,6 @@
     "react-masonry-component": "^5.0.7",
     "react-router-dom": "^4.1.1",
     "react-router-page-transition": "^3.0.2",
-    "react-router-scroll": "^0.4.2",
     "react-router-transition": "^0.1.1",
     "react-transition-group": "^1.2.0",
     "url-loader": "^0.5.9"

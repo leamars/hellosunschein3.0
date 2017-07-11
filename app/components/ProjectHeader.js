@@ -8,24 +8,28 @@ const paragraph = {
 
 const title = {
   fontSize: 45,
-  textDecoration: 'underline'
+  display: 'inbline-block',
+  borderBottomStyle: 'solid',
+  borderBottomColor: 'black',
+  borderBottomSize: '20px'
 }
 
-const date = {
-  marginTop: 10
-}
-const location = {
+const subTitle = {
   marginTop: 10
 }
 const links = {
-  marginTop: 10
+  marginTop: 5
+}
+
+const resource = {
+  marginTop: 20
 }
 
 const styles = {
   title: Object.assign(title, paragraph),
-  date: Object.assign(paragraph, date),
-  location: Object.assign(paragraph, location),
+  subTitle: Object.assign(paragraph, subTitle),
   links: Object.assign(paragraph, links),
+  resources: resource,
 }
 
 class ProjectHeader extends React.Component {
@@ -37,23 +41,46 @@ class ProjectHeader extends React.Component {
 
     return (
       <div>
-        <p style={styles.title}>{this.props.title}</p>
-        <p style={styles.date}>{this.props.location}, {this.props.date}</p>
+        <p style={styles.title}>{this.props.project.name}</p>
+        <p style={styles.subTitle}>{this.props.project.location}, {this.props.project.date}</p>
+        <p style={styles.resources}>Resources</p>
+        {this.props.project.links.map((link, index) => {
+          return (
+            <p style={styles.links}
+              key={index}>
+              <a target="_blank" href={link.url}>{link.title}</a>
+            </p>
+          )
+        })
+        }
       </div>
     )
   }
 }
 
 ProjectHeader.propTypes = {
-  title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired
+  project: PropTypes.object.isRequired
 }
 
 ProjectHeader.defaultProps = {
   title: "EmoBot",
   date: "July 2017",
-  location: "@ITP, NYU"
+  location: "@ITP, NYU",
+  links: [
+    {
+      title: "Github Repo",
+      url: "https://github.com/leamars/EmoBot"
+    },{
+      title: "Affectiva SDK",
+      url: "https://developer.affectiva.com/"
+    },{
+      title: "Arduino 101",
+      url: "https://www.arduino.cc/en/Reference/CurieBLE"
+    },{
+      title: "BLE for iOS Resources",
+      url: "https://www.raywenderlich.com/52080/introduction-core-bluetooth-building-heart-rate-monitor"
+    }
+  ]
 }
 
 module.exports = ProjectHeader;

@@ -1,4 +1,7 @@
 //import Axios from 'axios';
+import React, { Component } from 'react';
+import EmoBot from '../components/projects/EmoBot'
+import LightTrix from '../components/projects/LightTrix'
 
 function getRandomColor() {
   var colors = [
@@ -16,11 +19,7 @@ function getRandomColor() {
 }
 
 var imgs = [
-  'https://cdn.dribbble.com/users/375673/screenshots/3026449/georgiadribbble2.png',
-  'https://cdn.dribbble.com/users/375673/screenshots/2925139/dribblefinal.gif',
-  'https://cdn.dribbble.com/users/375673/screenshots/2921639/businesscardsdribble.png',
-  'https://cdn.dribbble.com/users/375673/screenshots/2913311/typo800x400.png',
-  'https://cdn.dribbble.com/users/375673/screenshots/2911380/paintsignrightdimensions.png',
+  'https://cdn.dribbble.com/users/375673/screenshots/2724647/preseventlogo.png',
   'https://cdn.dribbble.com/users/375673/screenshots/2928618/flaggif3.gif',
   'https://cdn.dribbble.com/users/375673/screenshots/2719741/appdev_logo.png',
   'https://cdn.dribbble.com/users/375673/screenshots/2724647/preseventlogo.png',
@@ -42,64 +41,165 @@ var pathNames = [
 const ProjectAPI = {
   projects: [
     {
-      color: getRandomColor(),
-      img: imgs[0],
-      name: pathNames[0]
+      name: "emoBot",
+      color: "#FDBB2C",
+      img: 'dist/imgs/emoBot/emoBotHeader.png',
+      date: "Jul 1, 2017",
+      location: "@ITP, NYU",
+      links: [
+        {
+          title: "Github Repo",
+          url: "https://github.com/leamars/EmoBot"
+        },{
+          title: "Affectiva SDK",
+          url: "https://developer.affectiva.com/"
+        },{
+          title: "Arduino 101",
+          url: "https://www.arduino.cc/en/Reference/CurieBLE"
+        },{
+          title: "BLE for iOS Resources",
+          url: "https://www.raywenderlich.com/52080/introduction-core-bluetooth-building-heart-rate-monitor"
+        },
+      ],
+      render: <EmoBot />
     },
     {
-      color: getRandomColor(),
-      img: imgs[1],
-      name: pathNames[1]
+      name: "lightTrix",
+      color: "#FDBB2C",
+      img: 'dist/imgs/lightTrix/lightTrixLea.gif',
+      date: "Jul 1, 2017",
+      location: "@ITP, NYU",
+      links: [
+        {
+          title: "Github Repo",
+          url: "https://github.com/leamars/EmoBot"
+        },{
+          title: "Affectiva SDK",
+          url: "https://developer.affectiva.com/"
+        },{
+          title: "Arduino 101",
+          url: "https://www.arduino.cc/en/Reference/CurieBLE"
+        },{
+          title: "BLE for iOS Resources",
+          url: "https://www.raywenderlich.com/52080/introduction-core-bluetooth-building-heart-rate-monitor"
+        }
+      ],
+      render: <LightTrix />
     },
     {
-      color: getRandomColor(),
-      img: imgs[2],
-      name: pathNames[2]
+      name: "rantAndChant",
+      color: "#FDBB2C",
+      img: 'dist/imgs/rantAndChant/rantAndChantLogo.png',
+      date: "Jul 1, 2017",
+      location: "@ITP, NYU",
+      links: [
+        {
+          title: "Github Repo",
+          url: "https://github.com/leamars/EmoBot"
+        },{
+          title: "Affectiva SDK",
+          url: "https://developer.affectiva.com/"
+        },{
+          title: "Arduino 101",
+          url: "https://www.arduino.cc/en/Reference/CurieBLE"
+        },{
+          title: "BLE for iOS Resources",
+          url: "https://www.raywenderlich.com/52080/introduction-core-bluetooth-building-heart-rate-monitor"
+        }
+      ],
+      render: <EmoBot />
     },
     {
-      color: getRandomColor(),
-      img: imgs[3],
-      name: pathNames[3]
+      name: "presevent",
+      color: "#FDBB2C",
+      img: 'dist/imgs/presevent/preseventLogo2.png',
+      date: "Jul 1, 2017",
+      location: "@ITP, NYU",
+      links: [
+        {
+          title: "Github Repo",
+          url: "https://github.com/leamars/EmoBot"
+        },{
+          title: "Affectiva SDK",
+          url: "https://developer.affectiva.com/"
+        },{
+          title: "Arduino 101",
+          url: "https://www.arduino.cc/en/Reference/CurieBLE"
+        },{
+          title: "BLE for iOS Resources",
+          url: "https://www.raywenderlich.com/52080/introduction-core-bluetooth-building-heart-rate-monitor"
+        }
+      ],
+      render: <EmoBot />
     },
     {
-      color: getRandomColor(),
-      img: imgs[4],
-      name: pathNames[4]
+      name: "appDev",
+      color: "#FDBB2C",
+      img: 'dist/imgs/appDev/appDevLogo.png',
+      date: "Jul 1, 2017",
+      location: "@ITP, NYU",
+      links: [
+        {
+          title: "Github Repo",
+          url: "https://github.com/leamars/EmoBot"
+        },{
+          title: "Affectiva SDK",
+          url: "https://developer.affectiva.com/"
+        },{
+          title: "Arduino 101",
+          url: "https://www.arduino.cc/en/Reference/CurieBLE"
+        },{
+          title: "BLE for iOS Resources",
+          url: "https://www.raywenderlich.com/52080/introduction-core-bluetooth-building-heart-rate-monitor"
+        }
+      ],
+      render: <EmoBot />
     },
     {
-      color: getRandomColor(),
-      img: imgs[5],
-      name: pathNames[5]
+      name: "colorblaind",
+      color: "#FDBB2C",
+      img: 'dist/imgs/colorblaind/colorblaindLogo.png',
+      date: "Jul 1, 2017",
+      location: "@ITP, NYU",
+      links: [
+        {
+          title: "Github Repo",
+          url: "https://github.com/leamars/EmoBot"
+        },{
+          title: "Affectiva SDK",
+          url: "https://developer.affectiva.com/"
+        },{
+          title: "Arduino 101",
+          url: "https://www.arduino.cc/en/Reference/CurieBLE"
+        },{
+          title: "BLE for iOS Resources",
+          url: "https://www.raywenderlich.com/52080/introduction-core-bluetooth-building-heart-rate-monitor"
+        }
+      ],
+      render: <EmoBot />
     },
     {
-      color: getRandomColor(),
-      img: imgs[0],
-      name: pathNames[0]
-    },
-    {
-      color: getRandomColor(),
-      img: imgs[1],
-      name: pathNames[1]
-    },
-    {
-      color: getRandomColor(),
-      img: imgs[2],
-      name: pathNames[2]
-    },
-    {
-      color: getRandomColor(),
-      img: imgs[3],
-      name: pathNames[3]
-    },
-    {
-      color: getRandomColor(),
-      img: imgs[4],
-      name: pathNames[4]
-    },
-    {
-      color: getRandomColor(),
-      img: imgs[5],
-      name: pathNames[5]
+      name: "pioneerWeekend",
+      color: "#FDBB2C",
+      img: 'dist/imgs/pioneerWeekend/pioneerWeekendLogo.png',
+      date: "Jul 1, 2017",
+      location: "@ITP, NYU",
+      links: [
+        {
+          title: "Github Repo",
+          url: "https://github.com/leamars/EmoBot"
+        },{
+          title: "Affectiva SDK",
+          url: "https://developer.affectiva.com/"
+        },{
+          title: "Arduino 101",
+          url: "https://www.arduino.cc/en/Reference/CurieBLE"
+        },{
+          title: "BLE for iOS Resources",
+          url: "https://www.raywenderlich.com/52080/introduction-core-bluetooth-building-heart-rate-monitor"
+        }
+      ],
+      render: <EmoBot />
     }
   ],
   all: function() { return this.projects },

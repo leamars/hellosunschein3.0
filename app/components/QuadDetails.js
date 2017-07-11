@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import ProjectAPI from '../utils/Api';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-// All the project components
+// All the project components - all projects must be imported here!!!
 import EmoBot from './projects/EmoBot';
+import LightTrix from './projects/LightTrix';
 
 class QuadDetails extends Component {
 
@@ -35,27 +36,35 @@ class QuadDetails extends Component {
   render() {
 
     var projectId = this.props.match.params.projectId
-    var projectFull = ProjectAPI.get(projectId); // Grab project from API
+    var project = ProjectAPI.get(projectId); // Grab project from API
 
     var currentScrollTop = this.context.scrollFromTop;
+
     return (
         <div
           className='quadDetailsContainer'
           style={{
             //borderColor: projectFull.color,
             //backgroundColor: projectFull.color
-            backgroundColor: 'yellow',
-            borderColor: '#fff'
+            backgroundColor: 'white',
+            borderColor: 'white'
           }}
         >
-          <div className='quadDetails'>
+          <div className='quadDetails'
+            style = {{
+              //borderColor: 'white'
+            }}>
             <Link to={{
             pathname: `/`,
               state: { modal: true }
             }}>
               <div className='closeButton'>x</div>
             </Link>
-            <EmoBot />
+
+            {React.cloneElement(
+              project.render,
+              {project: project}
+            )}
           </div>
         </div>
     )
