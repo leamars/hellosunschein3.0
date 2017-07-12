@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ProjectHeader from '../ProjectHeader';
 import ProjectStyles from './ProjectStyles';
 
-class Doodle extends Component {
+class RTRDeeplinking extends Component {
 
   constructor(props) {
     super(props);
@@ -23,8 +23,8 @@ class Doodle extends Component {
   }
 }
 
-Doodle.propTypes = {
+RTRDeeplinking.propTypes = {
   project: PropTypes.object.isRequired
 }
 
-module.exports = Doodle;
+module.exports = RTRDeeplinking;

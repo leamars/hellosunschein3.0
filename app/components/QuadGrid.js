@@ -23,7 +23,7 @@ class QuadGrid extends Component {
           return (
             <Link
               to={{
-                pathname: `/projects/${project.name}`,
+                pathname: `/projects/${project.id}`,
                 paramToPass: 'awesomeParam'
               }}
               key={index}>
@@ -34,7 +34,6 @@ class QuadGrid extends Component {
                 color={project.color}
                 name={project.name}
                 img= {project.img}
-
               />
             </Link>
           )

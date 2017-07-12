@@ -37,6 +37,7 @@ class QuadDetails extends Component {
 
     var projectId = this.props.match.params.projectId
     var project = ProjectAPI.get(projectId); // Grab project from API
+    console.log(project);
 
     var currentScrollTop = this.context.scrollFromTop;
 

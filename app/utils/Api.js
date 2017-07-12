@@ -2,6 +2,25 @@
 import React, { Component } from 'react';
 import EmoBot from '../components/projects/EmoBot'
 import LightTrix from '../components/projects/LightTrix'
+import PioneerWeekend from '../components/projects/PioneerWeekend'
+import CodeArt from '../components/projects/CodeArt'
+import Colorblaind from '../components/projects/Colorblaind'
+import DeltaNYC from '../components/projects/DeltaNYC'
+import Doodle from '../components/projects/Doodle'
+import GrinnellAppDev from '../components/projects/GrinnellAppDev'
+import GrinnellMAP from '../components/projects/GrinnellMAP'
+import iOSApps from '../components/projects/iOSApps'
+import LightItUp from '../components/projects/LightItUp'
+import MixedMedia from '../components/projects/MixedMedia'
+import Presevent from '../components/projects/Presevent'
+import ProjectStyles from '../components/projects/ProjectStyles'
+import RantAndChant from '../components/projects/RantAndChant'
+import RTRControlCenter from '../components/projects/RTRControlCenter'
+import RTRDeeplinking from '../components/projects/RTRDeeplinking'
+import RTRUnlimited from '../components/projects/RTRUnlimited'
+import RWenderlich from '../components/projects/RWenderlich'
+import Typography from '../components/projects/Typography'
+import Workshops from '../components/projects/Workshops'
 
 function getRandomColor() {
   var colors = [
@@ -18,30 +37,15 @@ function getRandomColor() {
   return colors[Math.floor(Math.random() * numColors)];
 }
 
-var imgs = [
-  'https://cdn.dribbble.com/users/375673/screenshots/2724647/preseventlogo.png',
-  'https://cdn.dribbble.com/users/375673/screenshots/2928618/flaggif3.gif',
-  'https://cdn.dribbble.com/users/375673/screenshots/2719741/appdev_logo.png',
-  'https://cdn.dribbble.com/users/375673/screenshots/2724647/preseventlogo.png',
-  'https://cdn.dribbble.com/users/375673/screenshots/2921631/ezgif.com-gif-maker-_3_.gif'
-];
+// GHC Poster - https://ghc.anitaborg.org/2014-posters/
 
-var pathNames = [
-  "RantChant",
-  "RWDevConfOnboarding",
-  "TheUXSearch1",
-  "TheUXSearch2",
-  "FramerJS",
-  "GeorgiaTypography",
-  "ITPCamp",
-  "GeorgiaTypography",
-  "100DaysOfCodeArt"
-];
+// https://forums.appleinsider.com/discussion/180524/apples-200-student-wwdc-attendees-super-excited-about-the-future-of-tech
 
 const ProjectAPI = {
   projects: [
     {
-      name: "emoBot",
+      id: "emoBot",
+      name: "EmoBot",
       color: "#FDBB2C",
       img: 'dist/imgs/emoBot/emoBotHeader.png',
       date: "Jul 1, 2017",
@@ -64,7 +68,8 @@ const ProjectAPI = {
       render: <EmoBot />
     },
     {
-      name: "lightTrix",
+      id: "lightTrix",
+      name: "LightTrix",
       color: "#FDBB2C",
       img: 'dist/imgs/lightTrix/lightTrixLea.gif',
       date: "Jul 1, 2017",
@@ -87,7 +92,8 @@ const ProjectAPI = {
       render: <LightTrix />
     },
     {
-      name: "rantAndChant",
+      id: "rantAndChant",
+      name: "Rant & Chant",
       color: "#FDBB2C",
       img: 'dist/imgs/rantAndChant/rantAndChantLogo.png',
       date: "Jul 1, 2017",
@@ -110,15 +116,16 @@ const ProjectAPI = {
       render: <EmoBot />
     },
     {
-      name: "presevent",
+      id: "presevent",
+      name: "Presevent",
       color: "#FDBB2C",
       img: 'dist/imgs/presevent/preseventLogo2.png',
       date: "Jul 1, 2017",
       location: "@ITP, NYU",
       links: [
         {
-          title: "Github Repo",
-          url: "https://github.com/leamars/EmoBot"
+          title: "Article about Presevent",
+          url: "http://pioneerapplications.com/blog/2015/09/15/an-interview-with-the-ceo-co-founder-of-presevent/"
         },{
           title: "Affectiva SDK",
           url: "https://developer.affectiva.com/"
@@ -133,30 +140,41 @@ const ProjectAPI = {
       render: <EmoBot />
     },
     {
-      name: "appDev",
+      id: "appDev",
+      name: "Grinnell AppDev",
       color: "#FDBB2C",
       img: 'dist/imgs/appDev/appDevLogo.png',
       date: "Jul 1, 2017",
       location: "@ITP, NYU",
       links: [
         {
-          title: "Github Repo",
-          url: "https://github.com/leamars/EmoBot"
+          title: "Global Students, Mobile Apps",
+          url: "http://www.grinnell.edu/news/global-students-mobile-apps"
         },{
-          title: "Affectiva SDK",
-          url: "https://developer.affectiva.com/"
+          title: "Grinnell AppDev @Mhacks",
+          url: "https://www.facebook.com/MHacksHackathon/photos/a.124621211031651.25621.124349814392124/247860102041094/?type=3&theater"
         },{
-          title: "Arduino 101",
-          url: "https://www.arduino.cc/en/Reference/CurieBLE"
+          title: "Grinnell AppDev as Constitutionalized in CS",
+          url: "https://www.grinnell.edu/academics/areas/computer-science/opportunities"
         },{
-          title: "BLE for iOS Resources",
-          url: "https://www.raywenderlich.com/52080/introduction-core-bluetooth-building-heart-rate-monitor"
+          title: "Github",
+          url: "https://www.grinnell.edu/academics/areas/computer-science/opportunities"
+        },{
+          title: "Grinwell Challenge",
+          url: "http://www.thesandb.com/news/grinwell-challenge-begins-app-launched.html"
+        },{
+          title: "Grinnell DB",
+          url: "http://www.thesandb.com/news/mobile-directory-app-now-operational.html"
+        },{
+          title: "AppDev Starts",
+          url: "http://www.thesandb.com/features/team-that-brought-you-g-licious-is-developing-new-apps.html"
         }
       ],
       render: <EmoBot />
     },
     {
-      name: "colorblaind",
+      id: "colorblaind",
+      name: "ColorblAInd",
       color: "#FDBB2C",
       img: 'dist/imgs/colorblaind/colorblaindLogo.png',
       date: "Jul 1, 2017",
@@ -179,24 +197,59 @@ const ProjectAPI = {
       render: <EmoBot />
     },
     {
-      name: "pioneerWeekend",
+      id: "pioneerWeekend",
+      name: "Pioneer Weekend",
       color: "#FDBB2C",
       img: 'dist/imgs/pioneerWeekend/pioneerWeekendLogo.png',
-      date: "Jul 1, 2017",
-      location: "@ITP, NYU",
+      date: "Apr 8, 2014",
+      location: "@Grinnell College, IA",
       links: [
         {
-          title: "Github Repo",
-          url: "https://github.com/leamars/EmoBot"
+          title: "First Iteration (2014)",
+          url: "http://pioneerweekend.strikingly.com/"
         },{
-          title: "Affectiva SDK",
-          url: "https://developer.affectiva.com/"
+          title: "Pioneer Weekend 2.0",
+          url: "https://www.grinnell.edu/news/pioneer-weekend-20-three-day-innovation-competition"
         },{
-          title: "Arduino 101",
-          url: "https://www.arduino.cc/en/Reference/CurieBLE"
+          title: "Pioneer Weekend 3.0 (and beyond)",
+          url: "http://www.pioneer-weekend.com/"
         },{
-          title: "BLE for iOS Resources",
-          url: "https://www.raywenderlich.com/52080/introduction-core-bluetooth-building-heart-rate-monitor"
+          title: "Adopted as a yearly Wilson Center event",
+          url: "https://www.grinnell.edu/academics/centers/wilson/events/pioneer-weekend"
+        },{
+          title: "The Wilson Center",
+          url: "https://www.grinnell.edu/academics/centers/wilson"
+        },{
+          title: "Pioneer weekend first interview",
+          url: "http://www.thesandb.com/news/pioneering-entrepreneurship.html"
+        }
+
+      ],
+      render: <PioneerWeekend />
+    },
+    {
+      id: "mica",
+      name: "MICA",
+      color: "#FDBB2C",
+      img: 'dist/imgs/pioneerWeekend/pioneerWeekendLogo.png',
+      date: "Apr 8, 2014",
+      location: "@Grinnell College, IA",
+      links: [
+        {
+          title: "Food Article in s&b",
+          url: "http://www.thesandb.com/article/fighting-food-insecurity-in-grinnell.html"
+        },{
+          title: "Pioneer Weekend 2.0",
+          url: "https://www.grinnell.edu/news/pioneer-weekend-20-three-day-innovation-competition"
+        },{
+          title: "Pioneer Weekend 3.0 (and beyond)",
+          url: "http://www.pioneer-weekend.com/"
+        },{
+          title: "Adopted as a yearly Wilson Center event",
+          url: "https://www.grinnell.edu/academics/centers/wilson/events/pioneer-weekend"
+        },{
+          title: "The Wilson Center",
+          url: "https://www.grinnell.edu/academics/centers/wilson"
         }
       ],
       render: <EmoBot />
@@ -204,7 +257,7 @@ const ProjectAPI = {
   ],
   all: function() { return this.projects },
   get: function(projectId) {
-    const isProject = p => p.name == projectId
+    const isProject = p => p.id == projectId
     return this.projects.find(isProject)
   }
 }
